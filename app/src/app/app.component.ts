@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import Phaser from 'phaser';
+import {Board} from "./model/class/Board";
 
 class NewScene extends Phaser.Scene {
 
@@ -41,6 +42,9 @@ export class AppComponent implements OnInit {
         height: 600
       }
     };
+
+    // print board test TODO: Remove
+    new Board().print()
   }
 
   ngOnInit() {
