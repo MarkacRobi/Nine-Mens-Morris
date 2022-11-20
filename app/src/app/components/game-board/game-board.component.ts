@@ -15,16 +15,10 @@ export class GameBoardComponent implements OnInit {
   constructor() {
     this.config = {
       type: Phaser.AUTO,
+      parent: "game-area",
       scene: [ BoardScene ],
-      physics: {
-        default: 'arcade',
-      },
-      scale: {
-        mode: Phaser.Scale.FIT,
-        parent: 'gameContainer',
-        width: 1078,
-        height: 1077
-      }
+      width: 800,
+      height: 800
     };
 
     // print board test TODO: Remove

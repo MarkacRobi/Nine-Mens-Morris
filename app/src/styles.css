@@ -1,1 +1,180 @@
 /* You can add global styles to this file, and also import other style files */
+/* container setup */
+
+body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background:#fff;
+}
+
+#game-area {
+  margin: 25px
+}
+
+/**
+ * Button styles
+ */
+
+span.btn {
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+span.btn a {
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+
+}
+span.btn a:before,
+span.btn a:after {
+  position: absolute;
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+span.btn.restart a:before,
+span.btn.restart a:after {
+  content: "Restart";
+}
+span.btn.save a:before,
+span.btn.save a:after {
+  content: "Save game";
+}
+span.btn.load a:before,
+span.btn.load a:after {
+  content: "Load game";
+}
+span.btn a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+span.btn a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+span.btn a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+
+
+
+
+/*
+ * FLEXBOX classes
+ */
+.container {
+  display: flex;
+}
+
+/*flex-direction*/
+.container-column {
+  flex-direction: column;
+}
+.container-row {
+  flex-direction: row;
+}
+
+.wrap{
+  flex-wrap: wrap;
+}
+
+.no-wrap{
+  flex-wrap: nowrap;
+}
+
+.item-flex {
+  display: flex;   /* new; nested flex container */
+  flex: 1;
+}
+
+/*flex-grow*/
+.item {
+  flex: 1;
+}
+
+.item-2 {
+  flex: 2; /* this item uses 2x more space than item with flex: 1 */
+}
+
+/*Justify-content for styling on main axis-columns*/
+
+.container-content-start{
+  justify-content: flex-start;
+}
+.container-content-end{
+  justify-content: flex-end;
+}
+.container-content-center{
+  justify-content: center;
+}
+.container-space-btw {
+  justify-content: space-between;
+}
+.container-content-around{
+  justify-content: space-around;
+}
+.justify-self-center {
+  justify-self: center;
+}
+.justify-self-start {
+  justify-self: start;
+}
+
+/* align-items for styling on on cross axis-rows */
+
+.container-top {
+  align-items: flex-start;
+}
+.container-bottom {
+  align-items: flex-end;
+}
+.container-center {
+  align-items: center;
+}
+.container-stretch {
+  align-items: stretch;
+}
+.align-end {
+  align-items: flex-end;
+}
+.center-container-content {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* container item alignment */
+.item-stretch {
+  align-self: stretch;
+}
+.item-top, .item-start {
+  align-self: flex-start;
+}
+.item-center {
+  align-self: center;
+}
+.item-bottom, .item-end {
+  align-self: flex-end;
+}
+.item-fix {
+  flex-basis: auto; /* fit item to the content */
+}
