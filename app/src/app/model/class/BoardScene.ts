@@ -1,8 +1,5 @@
 import Phaser from "phaser";
-import {HexColors} from "../enum/HexColors";
-import Pointer = Phaser.Input.Pointer;
-import Color = Phaser.Display.Color;
-import ScaleManager = Phaser.Scale.ScaleManager;
+import {StateChangeService} from "../../services/state-change.service";
 
 export class BoardScene extends Phaser.Scene {
 
@@ -10,7 +7,7 @@ export class BoardScene extends Phaser.Scene {
    * @description BoardScene class contains logic for displaying scene as well as handlers for interactions (e.g. mouse)
    */
 
-  constructor() {
+  constructor(private stateChangeService: StateChangeService) {
     super({ key: 'new' });
   }
 
@@ -63,61 +60,13 @@ export class BoardScene extends Phaser.Scene {
     boardNodes.forEach((node, index) => {
 
       // on hover node
-      node.on('pointerover', (pointer: Pointer) => {
-        // color node to black
-        node.setFillStyle(Color.HexStringToColor(HexColors.BLACK).color);
-
-        /**
-         * TODO:
-         * - IF node is EMPTY, show color of current player figures
-         * - IF node is not empty, do nothing
-         */
-      });
+      node.on('pointerover', () => this.stateChangeService.onGameNodeHoveredUpdate({node, position: index}));
 
       // on click node
-      node.on('pointerdown', (pointer: Pointer) => {
-        console.log(`rectangle ${index} clicked`);
-
-        /**
-         * TODO:
-         * - IF node is EMPTY, place current player color figure
-         * - IF node is NOT EMPTY and enemy player color figure is placed, check if current player can eliminate figure
-         */
-      });
+      node.on('pointerdown', () => this.stateChangeService.onGameNodeClickedUpdate({node, position: index}));
 
       // on pointer leaving node area
-      node.on("pointerout", (pointer: Pointer) => {
-        // handle mouse leaving game object
-
-        // reset color
-        node.setFillStyle();
-
-        /**
-         * TODO:
-         * - IF node is EMPTY, reset color with "node.setFillStyle();"
-         */
-      });
+      node.on('pointerout', () => this.stateChangeService.onGameNodeMouseoutUpdate({node, position: index}));
     });
-
-    this.input.on('pointerdown', (pointer: Pointer) => {
-      console.log(`Pointer clicked`, pointer);
-
-      /**
-       * TODO:
-       * - IF node is EMPTY, place current player color figure
-       * - IF node is NOT EMPTY and enemy player color figure is placed, check if current player can eliminate figure
-       */
-    });
-  }
-
-  handler(shape: any, x: any, y: any, gameObject: any): boolean {
-    if (shape.radius > 0 && x >= shape.left && x <= shape.right && y >= shape.top && y <= shape.bottom) {
-      const dx = (shape.x - x) * (shape.x - x);
-      const dy = (shape.y - y) * (shape.y - y);
-
-      return (dx + dy) <= (shape.radius * shape.radius);
-    } else {
-      return false;
-    }
   }
 }

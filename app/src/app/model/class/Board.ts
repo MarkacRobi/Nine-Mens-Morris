@@ -1,5 +1,6 @@
-import {BoardPosition} from "../enum/BoardPosition";
+import {BoardPosition} from "./BoardPosition";
 import {boardNeighbors} from "../../constants";
+import {BoardFigure} from "../enum/BoardFigure";
 
 export class Board {
   /**
@@ -11,7 +12,18 @@ export class Board {
 
   constructor() {
     this.board = new Array(24);
-    for(let i = 0; i < 24; i++) this.board[i] = BoardPosition.EMPTY;
+    // initialise board with empty positions
+    for(let i = 0; i < 24; i++) this.board[i] = new BoardPosition(i);
+  }
+
+  isEmpty(): boolean {
+    for(let i = 0; i < 24; i++) {
+      if (this.board[i].figure !== BoardFigure.EMPTY) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   /**
@@ -29,38 +41,38 @@ export class Board {
    * @description Print current board state to the console
    */
   print(): void {
-    console.log(this.board[0] + "(00)----------------------" + this.board[1] +
-      "(01)----------------------" + this.board[2] + "(02)")
+    console.log(this.board[0].figure + "(00)----------------------" + this.board[1].figure  +
+      "(01)----------------------" + this.board[2].figure  + "(02)")
     console.log("|                           |                           |")
     console.log("|                           |                           |")
     console.log("|                           |                           |")
-    console.log("|       " + this.board[8] + "(08)--------------" +
-      this.board[9] + "(09)--------------" + this.board[10] + "(10)     |")
+    console.log("|       " + this.board[8].figure  + "(08)--------------" +
+      this.board[9].figure  + "(09)--------------" + this.board[10].figure  + "(10)     |")
     console.log("|       |                   |                    |      |")
     console.log("|       |                   |                    |      |")
     console.log("|       |                   |                    |      |")
-    console.log("|       |        " + this.board[16] + "(16)-----" +
-      this.board[17] + "(17)-----" + this.board[18] + "(18)       |      |")
+    console.log("|       |        " + this.board[16].figure  + "(16)-----" +
+      this.board[17].figure  + "(17)-----" + this.board[18].figure  + "(18)       |      |")
     console.log("|       |         |                   |          |      |")
     console.log("|       |         |                   |          |      |")
     console.log("|       |         |                   |          |      |")
-    console.log(this.board[3] + "(03)---" + this.board[11] + "(11)----" + this.board[19] + "(19)               " +
-      this.board[20] + "(20)----" + this.board[12] + "(12)---" + this.board[4] + "(04)")
+    console.log(this.board[3].figure  + "(03)---" + this.board[11].figure  + "(11)----" + this.board[19].figure  + "(19)               " +
+      this.board[20].figure  + "(20)----" + this.board[12].figure  + "(12)---" + this.board[4].figure  + "(04)")
     console.log("|       |         |                   |          |      |")
     console.log("|       |         |                   |          |      |")
     console.log("|       |         |                   |          |      |")
-    console.log("|       |        " + this.board[21] + "(21)-----" +
-      this.board[22] + "(22)-----" + this.board[23] + "(23)       |      |")
+    console.log("|       |        " + this.board[21].figure  + "(21)-----" +
+      this.board[22].figure  + "(22)-----" + this.board[23].figure  + "(23)       |      |")
     console.log("|       |                   |                    |      |")
     console.log("|       |                   |                    |      |")
     console.log("|       |                   |                    |      |")
-    console.log("|       " + this.board[13] + "(13)--------------" +
-      this.board[14] + "(14)--------------" + this.board[15] + "(15)     |")
+    console.log("|       " + this.board[13].figure  + "(13)--------------" +
+      this.board[14].figure  + "(14)--------------" + this.board[15].figure  + "(15)     |")
     console.log("|                           |                           |")
     console.log("|                           |                           |")
     console.log("|                           |                           |")
-    console.log(this.board[5] + "(05)----------------------" + this.board[6] +
-      "(06)----------------------" + this.board[7] + "(07)")
+    console.log(this.board[5].figure  + "(05)----------------------" + this.board[6].figure  +
+      "(06)----------------------" + this.board[7].figure  + "(07)")
     console.log("\n")
   }
 }

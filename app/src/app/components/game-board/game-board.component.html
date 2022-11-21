@@ -1,1 +1,22 @@
+<div class="container container-row">
+  <div>
+    <h2 class="container container-center">Player 1 <span class="dot white"></span></h2>
+    <span>Stones left: {{game.getWhiteStonesLeft()}} Stones on board: {{game.getWhiteStonesOnBoard()}} Stones lost: {{game.getWhiteStonesLost()}}</span>
+  </div>
+  <div class="container text-center" style="margin: 0 50px">
+    <div>
+      <h2 *ngIf="game.isWhiteTurn()" class="container container-row container-content-center"><span class="dot white"></span> <span>turn</span></h2>
+      <h2 *ngIf="!game.isWhiteTurn()" class="container container-row container-content-center"><span class="dot black"></span> <span>turn</span></h2>
+      <div>
+        <span class="btn restart" (click)="onRestartGameClick()"><a href="javascript:void(0);"></a></span>
+        <span class="btn save"><a href="javascript:void(0);"></a></span>
+        <span class="btn load"><a href="javascript:void(0);"></a></span>
+      </div>
+    </div>
 
+  </div>
+  <div>
+    <h2 class="container container-center">Player 2 <span class="dot black"></span></h2>
+    <span>Stones left: {{game.getBlackStonesLeft()}} Stones on board: {{game.getBlackStonesOnBoard()}} Stones lost: {{game.getBlackStonesLost()}}</span>
+  </div>
+</div>

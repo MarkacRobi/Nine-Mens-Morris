@@ -8,11 +8,22 @@ body{
   height: 100vh;
   align-items: center;
   justify-content: center;
-  background:#fff;
+  background:#eeeee4;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 15px;
 }
 
 #game-area {
-  margin: 25px
+  margin: 25px;
+
+}
+
+#game-area canvas {
+  border-radius: 15px;
 }
 
 /**
@@ -22,16 +33,16 @@ body{
 span.btn {
   position: relative;
   display: inline-flex;
-  width: 180px;
-  height: 55px;
-  margin: 0 15px;
+  width: 90px;
+  height: 27px;
+  margin: 0 10px;
   perspective: 1000px;
 }
 span.btn a {
-  font-size: 19px;
+  font-size: 14px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
-  transform: translateZ(-25px);
+  transform: translateZ(-12px);
   transition: transform .25s;
   font-family: 'Montserrat', sans-serif;
 
@@ -39,14 +50,14 @@ span.btn a {
 span.btn a:before,
 span.btn a:after {
   position: absolute;
-  height: 55px;
-  width: 180px;
+  height: 27px;
+  width: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 5px solid black;
+  border: 2px solid black;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 span.btn.restart a:before,
@@ -64,17 +75,36 @@ span.btn.load a:after {
 span.btn a:before{
   color: #fff;
   background: #000;
-  transform: rotateY(0deg) translateZ(25px);
+  transform: rotateY(0deg) translateZ(12px);
 }
 span.btn a:after{
   color: #000;
-  transform: rotateX(90deg) translateZ(25px);
+  transform: rotateX(90deg) translateZ(12px);
 }
 span.btn a:hover{
-  transform: translateZ(-25px) rotateX(-90deg);
+  transform: translateZ(-12px) rotateX(-90deg);
 }
 
+.dot {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+}
 
+.dot.white {
+  background-color: #ffffff;
+}
+
+.dot.black {
+  background-color: #000000;
+}
+
+.text-center {
+  text-align: center;
+}
 
 
 

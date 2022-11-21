@@ -24,3 +24,5 @@ export const boardNeighbors = [
   [21, 23, 14],
   [20, 22]
 ]
+
+export const STONES_PER_PLAYER = 9;
