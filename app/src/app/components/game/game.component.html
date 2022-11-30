@@ -1,11 +1,27 @@
-<div class="container container-column">
-  <app-game-board></app-game-board>
-  <div class="container center-container-content" id="game-area">
-    <div class="container">
+<div class="container container-row">
+  <div>
+    <h2 class="container container-center">Player 1 <span class="dot white"></span></h2>
+    <span>Stones left: {{game.getWhiteStonesLeft()}}<br/> Stones on board: {{game.getWhiteStonesOnBoard()}}<br/> Stones lost: {{game.getWhiteStonesLost()}}</span>
+  </div>
+  <div class="container text-center" style="margin: 0 25px">
+    <div>
+      <h2 *ngIf="game.isWhiteTurn() && !game.gameOver" class="container container-row container-content-center"><span class="dot white"></span> <span>turn{{getPlayerText()}}</span></h2>
+      <h2 *ngIf="!game.isWhiteTurn() && !game.gameOver" class="container container-row container-content-center"><span class="dot black"></span> <span>turn{{getPlayerText()}}</span></h2>
+      <h2 *ngIf="game.gameOver" class="container container-row container-content-center">{{game.getWinnerColorText()}} player won!</h2>
+      <div>
+        <span class="btn restart" (click)="onRestartGameClick()"><a href="javascript:void(0);"></a></span>
+        <span class="btn save" (click)="onSaveClick()"><a href="javascript:void(0);"></a></span>
+        <span><input style="margin-left: 15px" class="custom-file-input" title="&nbsp;" type="file" id="file" (change)="handleFileInput($event)" onclick="this.value = null"></span>
+        <span class="prev-next-wrapper">
+        <a href="javascript:void(0);" class="previous round" (click)="game.onBackClick()">&#8249;</a>
+        <a href="javascript:void(0);" class="next round" (click)="game.onNextClick()">&#8250;</a>
+      </span>
+      </div>
     </div>
+
+  </div>
+  <div>
+    <h2 class="container container-center">Player 2 <span class="dot black"></span></h2>
+    <span>Stones left: {{game.getBlackStonesLeft()}}<br/> Stones on board: {{game.getBlackStonesOnBoard()}}<br/> Stones lost: {{game.getBlackStonesLost()}}</span>
   </div>
 </div>
-
-
-
-

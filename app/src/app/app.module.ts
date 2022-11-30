@@ -2,19 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { GameBoardComponent } from './components/game-board/game-board.component';
-import { GameComponent } from './components/game/game.component';
+import {MessagingService} from "./singleton-services/messaging.service";
+import {GameComponent} from "./components/game/game.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameBoardComponent,
-    GameComponent
+    GameComponent,
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ // singleton services provided in global scope
+    MessagingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
