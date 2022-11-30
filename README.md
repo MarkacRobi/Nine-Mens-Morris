@@ -12,7 +12,7 @@ Rules
 
 4. Each player aims to make "mills" - which are vertical or horizontal lines of three counters in row.
 
-5. When a player makes a mill, they can remove one of their opponent's pieces.
+5. When a player makes a mill, they can remove one of their opponent's pieces (can not remove piece that is in mill).
 
 6. Players take turns to play a piece of their own color on any unoccupied point until all eighteen pieces have been played.
 
